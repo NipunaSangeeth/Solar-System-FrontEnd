@@ -1,10 +1,87 @@
-import {
-  ChartColumn,
-  ChartLine,
-  LayoutDashboard,
-  TriangleAlert,
-} from "lucide-react";
+// import {
+//   ChartColumn,
+//   ChartLine,
+//   LayoutDashboard,
+//   TriangleAlert,
+// } from "lucide-react";
 
+// import {
+//   Sidebar,
+//   SidebarContent,
+//   SidebarGroup,
+//   SidebarGroupContent,
+//   SidebarGroupLabel,
+//   SidebarMenu,
+//   SidebarMenuButton,
+//   SidebarMenuItem,
+// } from "@/components/ui/sidebar";
+// import { Link, useLocation } from "react-router";
+
+// // Menu items.
+// const items = [
+//   {
+//     title: "Dashboard",
+//     url: "/dashboard",
+//     icon: <LayoutDashboard className="w-8 h-8" size={32} />,
+//   },
+//   {
+//     title: "Anomalies",
+//     url: "/dashboard/anomaly",
+//     icon: <TriangleAlert />,
+//   },
+//   {
+//     title: "Analatics",
+//     url: "/dashboard/analytics",
+//     icon: <ChartLine />,
+//   },
+//   {
+//     title: "Payments",
+//     url: "/dashboard/payments",
+//     icon: <ChartColumn />,
+//   },
+// ];
+
+// const sideBarTab = ({ item }) => {
+//   let location = useLocation();
+//   let isActive = location.pathname === item.url;
+
+//   return (
+//     <SidebarMenuItem key={item.url}>
+//       <SidebarMenuButton asChild isActive={isActive}>
+//         <Link to={item.url}>
+//           {/* Convert it to react component item.icon */}
+//           {item.icon}
+//           <span>{item.title}</span>
+//         </Link>
+//       </SidebarMenuButton>
+//     </SidebarMenuItem>
+//   );
+// };
+
+// export function AppSidebar() {
+//   return (
+//     <Sidebar>
+//       <SidebarContent>
+//         <SidebarGroup>
+//           <SidebarGroupLabel className={"text-3xl font-bold text-foreground"}>
+//             <Link to="/">Aelora</Link>
+//           </SidebarGroupLabel>
+//           <SidebarGroupContent>
+//             <SidebarMenu className="mt-4 text">
+//               {items.map((item) => (
+//                 <sideBarTab key={item.url} item={item} />
+//               ))}
+//             </SidebarMenu>
+//           </SidebarGroupContent>
+//         </SidebarGroup>
+//       </SidebarContent>
+//     </Sidebar>
+//   );
+// }
+
+
+import { ChartLine, LayoutDashboard, TriangleAlert } from "lucide-react";
+import { Link } from "react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -15,52 +92,58 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Link } from "react-router";
+import { useLocation } from "react-router";
+import { cn } from "@/lib/utils";
 
 // Menu items.
 const items = [
   {
     title: "Dashboard",
     url: "/dashboard",
-    icon: <LayoutDashboard className="w-8 h-8" size={32}/>,
+    icon: <LayoutDashboard className="w-8 h-8" size={32} />,
   },
   {
     title: "Anomalies",
     url: "/dashboard/anomaly",
-    icon: <TriangleAlert/>,
+    icon: <TriangleAlert className="w-8 h-8" size={32} />,
   },
   {
-    title: "Analatics",
+    title: "Analytics",
     url: "/dashboard/analytics",
-    icon: <ChartLine/>,
-  },
-  {
-    title: "Payments",
-    url: "/dashboard/payments",
-    icon: <ChartColumn/>,
+    icon: <ChartLine className="w-8 h-8" size={32} />,
   },
 ];
+
+const SideBarTab = ({ item }) => {
+  let location = useLocation();
+  let isActive = location.pathname === item.url;
+
+  return (
+    <SidebarMenuItem key={item.url}>
+      <SidebarMenuButton asChild isActive={isActive}>
+        <Link
+          to={item.url}
+        >
+          {item.icon}
+          <span>{item.title}</span>
+        </Link>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  );
+};
 
 export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className={"text-xl font-bold text-foreground"}>
-            Aelora
+          <SidebarGroupLabel className="text-3xl font-bold text-foreground">
+            <Link to="/">Aelora</Link>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className={"mt-6 te"}>
+            <SidebarMenu className="mt-4 text">
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link to={item.url}>
-                    {/* Convert it to react component item.icon */}
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <SideBarTab key={item.url} item={item} />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>

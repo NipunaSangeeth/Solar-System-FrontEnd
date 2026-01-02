@@ -54,6 +54,7 @@
 import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/quary";
 import DataCard from "./components/DataCard";
 import DataChart from "./components/DataChart";
+import SolarWeatherWidget from "./components/SolarWeatherWidget";
 
 const DashboardPage = () => {
   const { data, isLoading, isError, error } =
@@ -76,6 +77,10 @@ const DashboardPage = () => {
           error={error}
           title="Last 7 Days Energy Production"
         />
+      </div>
+      <div className="mt-4">
+      <SolarWeatherWidget />
+
       </div>
       <div className="mt-8">
         <DataChart
