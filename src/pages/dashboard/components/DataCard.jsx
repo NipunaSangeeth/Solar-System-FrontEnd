@@ -1,9 +1,16 @@
-
 import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/quary";
 import { format, toDate } from "date-fns";
 
-const DataCard = ({ data, isLoading, isError, error, title = "Data Overview" }) => {
+const DataCard = ({ title = "Data Overview", solarUnitId }) => {
+  const { data, isLoading, isError, error } =
+    useGetEnergyGenerationRecordsBySolarUnitQuery({
+      id: solarUnitId,
+      groupBy: "date",
+      limit: 7,
+    });
+
   if (isLoading) {
     return (
       <Card className="rounded-md p-4">
@@ -28,9 +35,7 @@ const DataCard = ({ data, isLoading, isError, error, title = "Data Overview" }) 
 
   return (
     <Card className="rounded-md p-4">
-      <h2 className="text-xl font-medium text-foreground">
-        {title}
-      </h2>
+      <h2 className="text-xl font-medium text-foreground">{title}</h2>
       <div className="grid grid-cols-7 gap-4 mt-4">
         {data.slice(0, 7).map((el) => {
           return (
@@ -46,7 +51,7 @@ const DataCard = ({ data, isLoading, isError, error, title = "Data Overview" }) 
                   {el.totalEnergy} kWh
                 </p>
               </div>
-            </div>  
+            </div>
           );
         })}
       </div>

@@ -9,7 +9,7 @@ export const api = createApi({
   endpoints: (build) => ({
       getEnergyGenerationRecordsBySolarUnit: build.query({
       // query: (id) => `/energy-generation-records/solar-unit/${id}`,
-      query: ({id, groupBy}) => `/energy-generation-records/solar-unit/${id}?groupBy=${groupBy}`
+      query: ({id, groupBy,limit}) => `/energy-generation-records/solar-unit/${id}?groupBy=${groupBy}&limit=${limit}`
     }),
   }),
 });

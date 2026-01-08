@@ -1,13 +1,8 @@
 import { useSelector } from "react-redux";
 import EnergyProductionCards from "./EnergyProductionCards";
 import Tab from "./Tab";
-import { Button } from "@/components/ui/button";
-import { getEnergyGenerationRecordsBySolarUnit } from "@/lib/api/energy-generation-record.js";
-import { useEffect, useState } from "react";
 import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/quary";
-import { isAllOf } from "@reduxjs/toolkit";
-import { ReceiptEuroIcon } from "lucide-react";
-import { format, subDays, toDate } from "date-fns";
+import { format, toDate } from "date-fns";
 
 const SolarEnergyProduction = () => {
   const energyProductionData = [
@@ -59,73 +54,6 @@ const SolarEnergyProduction = () => {
   });
 
   console.log(filteredEnergyProductionData);
-
-
-  // const formattedData = data.map((el) => {
-  //   return {
-  //     ...el,
-  //     timeStamp: toDate(el.timeStamp),
-  //   };
-  // });
-
-
-
-  // // 2. SORT THE DATA (Newest First)
-  // formattedData.sort((a, b) => b.timeStamp - a.timeStamp);
-
-  // const latesGenerationRecord = formattedData[0];
-  // const sevenDaysAgo = subDays(latesGenerationRecord.timeStamp, 6);
-
-  // const filteredData = formattedData.filter((el) => {
-  //   return el.timeStamp >= sevenDaysAgo;
-  // });
-
-  // const mappedData = filteredData.map((el) => {
-  //   return {
-  //     ...el,
-  //     date: format(el.timeStamp, "yyyy-MM-dd"),
-  //   };
-  // });
-  // console.log(mappedData);
-
-  // const groupedData = {};
-
-  // mappedData.forEach((el) => {
-  //   if (groupedData[el.date]) {
-  //     groupedData[el.date].push(el);
-  //   } else {
-  //     groupedData[el.date] = [];
-  //     groupedData[el.date].push(el);
-  //   }
-  // });
-
-  // const groupedDateArray = Object.entries(groupedData);
-  // //console.log("Grouped date:->", groupedDateArray)
-
-  // const calculateTotalProduction = (data) => {
-  //   let total = 0;
-  //   data.forEach((el) => {
-  //     total += el.energyGenerated;
-  //   });
-  //   return total;
-  // };
-
-  // const newEnergyProductionData = groupedDateArray.map(([date, data]) => {
-  //   return {
-  //     day: format(toDate(date), "EEE"),
-  //     date: format(toDate(date), "MMM d"),
-  //     hasAnomaly: false,
-  //     production: calculateTotalProduction(data),
-  //   };
-  // });
-  // const filteredEnergyProductionData = newEnergyProductionData.filter((el) => {
-  //   if (selectedTab === "all") {
-  //     return true;
-  //   } else if (selectedTab === "anomaly") {
-  //     return el.hasAnomaly;
-  //   }
-  // });
-  // console.log(newEnergyProductionData);
 
   return (
     <section className="px-12 font-[Inter] py-6">

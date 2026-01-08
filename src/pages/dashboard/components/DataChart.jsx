@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import {
   ChartContainer,
@@ -15,9 +14,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useGetEnergyGenerationRecordsBySolarUnitQuery } from "@/lib/redux/quary";
 
-const DataCard = ({ data, isLoading, isError, error }) => {
+
+const DataCard = ({ solarUnitId }) => {
   const [selectedRange, setSelectedRange] = useState("7");
+
+  const { data, isLoading, isError, error } =
+    useGetEnergyGenerationRecordsBySolarUnitQuery({
+      id: solarUnitId,
+      groupBy: "date",
+      limit: parseInt(selectedRange),
+    });
 
   const handleRangeChange = (range) => {
     setSelectedRange(range);
@@ -47,7 +55,7 @@ const DataCard = ({ data, isLoading, isError, error }) => {
 
   const title = "Energy Production Chart";
 
-  console.log(lastSelectedRangeDaysEnergyProduction);
+
 
   return (
     <Card className="rounded-md p-4">
@@ -56,9 +64,13 @@ const DataCard = ({ data, isLoading, isError, error }) => {
         <div>
           <Select value={selectedRange} onValueChange={handleRangeChange}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue className="text-foreground" placeholder="Select Range" />
+              <SelectValue
+                className="text-foreground"
+                placeholder="Select Range"
+              />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="1">Per Day</SelectItem>
               <SelectItem value="7">7 Days</SelectItem>
               <SelectItem value="30">30 Days</SelectItem>
             </SelectContent>
