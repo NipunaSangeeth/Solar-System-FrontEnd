@@ -19,6 +19,10 @@ import SignInPage from "./pages/auth/sign-in-page";
 import SignUpPage from "./pages/auth/sign-up-page";
 import AuthorizedLayout from "./layouts/authorized.layout";
 import AdminPage from "./pages/admin/admin.page";
+import AdminLayout from "./layouts/admin.layout";
+import SolarUnitsPage from "./pages/admin/solar-units.page";
+import SolarUnitDetailPage from "./pages/admin/solar-unit-detail.page";
+import SettingsPage from "./pages/admin/settings.page";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -47,7 +51,12 @@ createRoot(document.getElementById("root")).render(
                   <Route path="/dashboard" element={<DashboardPage />} />
                 </Route>
                 <Route element={<AuthorizedLayout />}>
-                  <Route path="/admin/dashboard" element={<AdminPage />} />
+                  <Route element={<AdminLayout />}>
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/admin/solar-units" element={<SolarUnitsPage />}/>
+                    <Route path="/admin/solar-units/:id" element={<SolarUnitDetailPage />}/>
+                    <Route path="/admin/settings" element={<SettingsPage />} />
+                  </Route>
                 </Route>
               </Route>
             </Route>
@@ -55,5 +64,5 @@ createRoot(document.getElementById("root")).render(
         </ClerkProvider>
       </BrowserRouter>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

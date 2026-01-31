@@ -29,6 +29,12 @@ export const api = createApi({
     getSolarUnitForUser: build.query({
       query: () => `/solar-units/me`,
     }),
+    getSolarUnits: build.query({
+      query: () => `/solar-units`,
+    }),
+    getSolarUnitById: build.query({
+      query: (id) => `/solar-units/${id}`,
+    }),
   }),
 });
 
@@ -36,5 +42,5 @@ export const api = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetEnergyGenerationRecordsBySolarUnitQuery,
-  useGetSolarUnitForUserQuery,
+  useGetSolarUnitForUserQuery, useGetSolarUnitsQuery, useGetSolarUnitByIdQuery
 } = api;

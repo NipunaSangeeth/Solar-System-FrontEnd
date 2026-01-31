@@ -1,5 +1,5 @@
-import { ChartLine, LayoutDashboard, TriangleAlert } from "lucide-react";
-import { Link } from "react-router";
+import { Settings, Zap } from "lucide-react";
+import { Link, useLocation } from "react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -10,38 +10,29 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useLocation } from "react-router";
-import { cn } from "@/lib/utils";
 
-// Menu items.
+// Menu items for admin navigation.
 const items = [
   {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: <LayoutDashboard className="w-8 h-8" size={32} />,
+    title: "Solar Units",
+    url: "/admin/solar-units",
+    icon: <Zap className="w-8 h-8" size={32} />,
   },
   {
-    title: "Anomalies",
-    url: "/dashboard/anomaly",
-    icon: <TriangleAlert className="w-8 h-8" size={32} />,
-  },
-  {
-    title: "Analytics",
-    url: "/dashboard/analytics",
-    icon: <ChartLine className="w-8 h-8" size={32} />,
+    title: "Settings",
+    url: "/admin/settings",
+    icon: <Settings className="w-8 h-8" size={32} />,
   },
 ];
 
-const SideBarTab = ({ item }) => {
-  let location = useLocation();
-  let isActive = location.pathname === item.url;
+const AdminSideBarTab = ({ item }) => {
+  const location = useLocation();
+  const isActive = location.pathname === item.url;
 
   return (
     <SidebarMenuItem key={item.url}>
       <SidebarMenuButton asChild isActive={isActive}>
-        <Link
-          to={item.url}
-        >
+        <Link to={item.url}>
           {item.icon}
           <span>{item.title}</span>
         </Link>
@@ -50,7 +41,7 @@ const SideBarTab = ({ item }) => {
   );
 };
 
-export function AppSidebar() {
+export function AdminSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
@@ -59,9 +50,9 @@ export function AppSidebar() {
             <Link to="/">Aelora</Link>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="mt-4 text">
+            <SidebarMenu className="mt-4">
               {items.map((item) => (
-                <SideBarTab key={item.url} item={item} />
+                <AdminSideBarTab key={item.url} item={item} />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
