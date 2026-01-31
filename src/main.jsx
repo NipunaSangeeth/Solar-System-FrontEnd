@@ -22,6 +22,7 @@ import AdminPage from "./pages/admin/admin.page";
 import AdminLayout from "./layouts/admin.layout";
 import SolarUnitsPage from "./pages/admin/solar-units.page";
 import SolarUnitDetailPage from "./pages/admin/solar-unit-detail.page";
+
 import SettingsPage from "./pages/admin/settings.page";
 
 // Import your Publishable Key
@@ -50,11 +51,12 @@ createRoot(document.getElementById("root")).render(
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
                 </Route>
+
                 <Route element={<AuthorizedLayout />}>
                   <Route element={<AdminLayout />}>
                     <Route path="/admin" element={<AdminPage />} />
-                    <Route path="/admin/solar-units" element={<SolarUnitsPage />}/>
-                    <Route path="/admin/solar-units/:id" element={<SolarUnitDetailPage />}/>
+                    <Route path="/admin/solar-units" element={<SolarUnitsPage />} />
+                    <Route path="/admin/solar-units/:id" element={<SolarUnitDetailPage />} />
                     <Route path="/admin/settings" element={<SettingsPage />} />
                   </Route>
                 </Route>
@@ -66,3 +68,4 @@ createRoot(document.getElementById("root")).render(
     </Provider>
   </StrictMode>,
 );
+
