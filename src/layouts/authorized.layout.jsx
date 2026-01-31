@@ -2,11 +2,11 @@ import { Outlet } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 
 export default function AuthorizedLayout() {
-//   const { user } = useUser();
+  const { user } = useUser();
 
-//   if (user?.publicMetadata.role !== "admin") {
-//     return <Navigate to="/" />;
-//   }
+  if (user?.publicMetadata.role !== "admin") {
+    return <Navigate to="/" />;
+  }
 
   return <Outlet />;
 }
