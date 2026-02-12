@@ -53,7 +53,7 @@ export function CreateSolarUnitForm() {
     useCreateSolarUnitMutation();
   async function onSubmit(values) {
     try {
-      await createSolarUnit(values);
+      await createSolarUnit(values).unwrap();
     } catch (error) {
       console.log(error);
     }
@@ -131,8 +131,8 @@ export function CreateSolarUnitForm() {
             </FormItem>
           )}
         />
-        {/* <Button type="submit" disabled={isCreatingSolarUnit}> {isCreatingSolarUnit ? "Creating..." : "Create"} </Button> */}
-        <Button type="submit"> Submit</Button>
+        <Button type="submit" disabled={isCreatingSolarUnit}> {isCreatingSolarUnit ? "Creating..." : "Create"} </Button>
+
       </form>
     </Form>
   );

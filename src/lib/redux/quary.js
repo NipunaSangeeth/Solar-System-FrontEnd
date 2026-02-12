@@ -11,7 +11,7 @@ export const api = createApi({
       const clerk = window.Clerk;
       if (clerk) {
         const token = await clerk.session.getToken();
-        console.log(token);
+        // console.log(token);
         if (token) {
           // Autherized(Check if is Valide user)
           headers.set("Authorization", `Bearer ${token}`);
@@ -43,15 +43,27 @@ export const api = createApi({
         body: data,
       }),
     }),
+    editSolarUnit: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/solar-units/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
+    getAllUsers: build.query({
+      query: () => `/users`,
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
+  useGetAllUsersQuery,
   useGetEnergyGenerationRecordsBySolarUnitQuery,
   useGetSolarUnitForUserQuery,
   useGetSolarUnitsQuery,
   useGetSolarUnitByIdQuery,
   useCreateSolarUnitMutation,
+  useEditSolarUnitMutation,
 } = api;

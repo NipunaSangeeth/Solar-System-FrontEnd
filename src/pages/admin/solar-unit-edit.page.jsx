@@ -1,6 +1,9 @@
 // import { useGetSolarUnitByIdQuery } from "@/lib/redux/query";
 import { useNavigate, useParams } from "react-router";
-// import { EditSolarUnitForm } from "./components/EditSolarUnitForm";
+import { EditSolarUnitForm } from "./components/EditSolarUnitForm";
+import { useGetSolarUnitByIdQuery } from "@/lib/redux/quary";
+
+
 
 export default function SolarUnitEditPage() {
   const { id } = useParams();
@@ -32,7 +35,7 @@ export default function SolarUnitEditPage() {
     <main className="mt-4">
       <h1 className="text-4xl font-bold text-foreground">Edit Solar Unit</h1>
       <h2 className="mt-4 text-2xl font-bold text-foreground">{solarUnit.serialNumber}</h2>
-      <p className="text-gray-600 mt-2">Edit the details of the solar unit</p>'
+      <p className="text-gray-600 mt-2">Edit the details of the solar unit</p>
       
       <div className="mt-8">
         <EditSolarUnitForm solarUnit={solarUnit} />

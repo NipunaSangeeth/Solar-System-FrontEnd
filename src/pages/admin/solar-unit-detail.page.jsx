@@ -23,7 +23,8 @@ export default function SolarUnitDetailPage() {
 
   const handleEdit = () => {
     // TODO: Navigate to edit page
-    console.log("Edit solar unit:", solarUnit._id);
+    // console.log("Edit solar unit:", solarUnit._id);
+    navigate(`/admin/solar-units/${solarUnit._id}/edit`)
   };
 
   const handleDelete = () => {
@@ -137,7 +138,7 @@ export default function SolarUnitDetailPage() {
               <div>
                 <p className="text-sm text-muted-foreground mb-1">User ID</p>
                 <p className="text-sm font-mono text-foreground">
-                  {solarUnit.userId}
+                  {solarUnit.userId ?? "No User Assinged"}
                 </p>
               </div>
             </div>

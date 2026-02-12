@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { useUser } from "@clerk/clerk-react";
 
 export default function AuthorizedLayout() {
