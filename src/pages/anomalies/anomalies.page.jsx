@@ -1,10 +1,9 @@
 import { useGetSolarUnitForUserQuery } from "@/lib/redux/quary";
-
-import DataChart from "./components/DataChart";
+import DataCard from "./components/DataCard";
 import SolarWeatherWidget from "./components/SolarWeatherWidget";
 import { useUser } from "@clerk/clerk-react";
 
-const DashboardPage = () => {
+const AnomaliesPage = () => {
   const { user } = useUser();
 
   const {
@@ -28,16 +27,20 @@ const DashboardPage = () => {
     <main className="mt-4">
       <h1 className="text-4xl font-bold text-foreground">{user?.firstName}</h1>
       <p className="text-gray-600 mt-2">
-        Welcome back to your Solar Energy Production Dashboard
+        Monitor anomalies in your solar unit 
       </p>{" "}
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <SolarWeatherWidget />
-      </div>
+      </div> */}
       <div className="mt-8">
-        <DataChart solarUnitId={solarUnit._id} />
+        <DataCard
+          solarUnitId={solarUnit._id}
+          title="Last 7 Days Energy Production"
+        />
       </div>
+
     </main>
   );
 };
 
-export default DashboardPage;
+export default AnomaliesPage;

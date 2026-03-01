@@ -67,3 +67,5 @@ export const {
   useCreateSolarUnitMutation,
   useEditSolarUnitMutation,
 } = api;
+
+// put the wether condition API Qury.js file. 
