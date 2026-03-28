@@ -108,7 +108,7 @@ const DataCard = ({ solarUnitId }) => {
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Area
               dataKey="energy"
-              type="natural"
+              type="linear"
               fill="var(--color-energy)"
               fillOpacity={0.4}
               stroke="var(--color-energy)"
