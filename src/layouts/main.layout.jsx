@@ -1,10 +1,11 @@
-import Navigation from "@/components/Navigation/Navigation";
+// export it the Main.jsx
+
 import { Outlet } from "react-router";
+
 
 export default function MainLayout() {
   return (
     <>
-      <Navigation />
       <Outlet />
     </>
   );
