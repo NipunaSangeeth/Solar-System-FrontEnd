@@ -53,6 +53,9 @@ export const api = createApi({
     getAllUsers: build.query({
       query: () => `/users`,
     }),
+    getWeather:build.query({
+      query:({lat,lng}) =>`/weather?lat=${lat}&lng=${lng}`
+    })
   }),
 });
 
@@ -66,6 +69,7 @@ export const {
   useGetSolarUnitByIdQuery,
   useCreateSolarUnitMutation,
   useEditSolarUnitMutation,
+  useGetWeatherQuery,
 } = api;
 
 // put the wether condition API Qury.js file. 

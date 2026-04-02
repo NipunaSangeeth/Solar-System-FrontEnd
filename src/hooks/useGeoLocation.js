@@ -7,12 +7,12 @@ export const useGeoLocation = () => {
     error: null,
   });
 
-  const onSuccess = (location) => {
+  const onSuccess = (position) => {
     setLocation({
       loaded: true,
       coordinates: {
-        lat: location.coords.latitude,
-        lng: location.coords.longitude,
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
       },
       error: null,
     });
@@ -32,9 +32,20 @@ export const useGeoLocation = () => {
         code: 0,
         message: "Geolocation not supported",
       });
+      return
     }
-
+// get the Initial possition 
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    //Location changing 
+    const watchId = navigator.geolocation.watchPosition(onSuccess, onError, {
+      nableHighAccuracy: false,
+      maximumAge: 60000, // Cache position for 1 minute
+      timeout: 10000, // Wait up to 10 seconds
+    });
+
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+    }
   }, []);
 
   return location;

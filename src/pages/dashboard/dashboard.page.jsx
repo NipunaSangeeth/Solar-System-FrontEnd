@@ -27,7 +27,7 @@ const DashboardPage = () => {
   return (
     <main className="mt-4">
       <h1 className="text-4xl font-bold text-foreground">{user?.firstName}</h1>
-      <p className="text-gray-600 mt-2">
+      <p className="text-muted-foreground mt-2">
         Welcome back to your Solar Energy Production Dashboard
       </p>{" "}
       <div className="mt-4">

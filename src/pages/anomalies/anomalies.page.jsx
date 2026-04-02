@@ -26,7 +26,7 @@ const AnomaliesPage = () => {
   return (
     <main className="mt-4">
       <h1 className="text-4xl font-bold text-foreground">{user?.firstName}</h1>
-      <p className="text-gray-600 mt-2">
+      <p className="text-muted-foreground mt-2">
         Monitor anomalies in your solar unit 
       </p>{" "}
       {/* <div className="mt-4">

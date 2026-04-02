@@ -166,7 +166,7 @@ const DataCard = ({ title = "Solar Energy Production", solarUnitId }) => {
             <select
               value={detectionMethod}
               onChange={(e) => setDetectionMethod(e.target.value)}
-              className="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-1 border border-gray-300 rounded-md text-sm bg-white text-gray-900 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="windowAverage">Window Average (7-day)</option>
               <option value="absolute">Absolute Threshold</option>

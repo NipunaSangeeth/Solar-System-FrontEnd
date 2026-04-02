@@ -4,7 +4,7 @@ const EnergyProductionCards = (props) => {
   if (props.energyProductionData.length === 0) {
     return (
       <div className="mt-4 h-32 py-4">
-        <p className="text-gray-600">No anomalies found</p>
+        <p className="text-muted-foreground">No anomalies found</p>
       </div>
     );
   }

@@ -50,6 +50,7 @@ const DataCard = ({ solarUnitId }) => {
     energy: {
       label: "Energy (kWh)",
       color: "oklch(54.6% 0.245 262.881)",
+      // color: "oklch(0.79 0.16 85)",
     },
   };
 
