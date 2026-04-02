@@ -39,9 +39,7 @@ const SideBarTab = ({ item }) => {
   return (
     <SidebarMenuItem key={item.url}>
       <SidebarMenuButton asChild isActive={isActive}>
-        <Link
-          to={item.url}
-        >
+        <Link to={item.url}>
           {item.icon}
           <span>{item.title}</span>
         </Link>
@@ -56,7 +54,14 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-3xl font-bold text-foreground">
-            <Link to="/">SanSolar</Link>
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/assets/images/image.png"
+                alt="SanSolar"
+                className="h-8 w-auto object-contain"
+              />
+              <span>SanSolar</span>
+            </Link>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="mt-4 text">

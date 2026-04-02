@@ -47,7 +47,14 @@ export function AdminSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-3xl font-bold text-foreground">
-            <Link to="/">SanSolar</Link>
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/assets/images/image.png"
+                alt="SanSolar"
+                className="h-8 w-auto object-contain"
+              />
+              <span>SanSolar</span>
+            </Link>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="mt-4">
