@@ -27,6 +27,7 @@ import SettingsPage from "./pages/admin/settings.page";
 import SolarUnitEditPage from "./pages/admin/solar-unit-edit.page";
 import SolarUnitCreatePage from "./pages/admin/solar-unit-create.page";
 import AnomaliesPage from "./pages/anomalies/anomalies.page";
+import AnalyticsPage from "./pages/analytics/analytics.page";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -54,6 +55,8 @@ createRoot(document.getElementById("root")).render(
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/dashboard/anomalies" element={<AnomaliesPage />} />
+                  <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
+
                 </Route>
 
                 <Route element={<AuthorizedLayout />}>

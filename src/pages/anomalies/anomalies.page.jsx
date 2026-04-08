@@ -1,6 +1,6 @@
 import { useGetSolarUnitForUserQuery } from "@/lib/redux/quary";
-import DataCard from "./components/DataCard";
-import SolarWeatherWidget from "./components/SolarWeatherWidget";
+import DataCard from "../dashboard/components/DataCard";
+// import SolarWeatherWidget from "./components/SolarWeatherWidget";
 import { useUser } from "@clerk/clerk-react";
 
 const AnomaliesPage = () => {

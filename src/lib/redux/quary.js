@@ -50,12 +50,18 @@ export const api = createApi({
         body: data,
       }),
     }),
+    // User management lookup
     getAllUsers: build.query({
       query: () => `/users`,
     }),
-    getWeather:build.query({
-      query:({lat,lng}) =>`/weather?lat=${lat}&lng=${lng}`
-    })
+    // External weather integration (Open-Meteo via backend proxy)
+    getWeather: build.query({
+      query: ({ lat, lng }) => `/weather?lat=${lat}&lng=${lng}`,
+    }),
+    // Analytical metrics, financial math, and solar technical stats
+    getSolarAnalytics: build.query({
+      query: (id) => `/analytics/${id}`,
+    }),
   }),
 });
 
@@ -70,6 +76,8 @@ export const {
   useCreateSolarUnitMutation,
   useEditSolarUnitMutation,
   useGetWeatherQuery,
+  useGetSolarAnalyticsQuery,
+
 } = api;
 
-// put the wether condition API Qury.js file. 
+
