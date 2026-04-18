@@ -73,6 +73,10 @@ export const api = createApi({
     getSessionStatus: build.query({
       query: (sessionId) => `/payments/session-status?session_id=${sessionId}`,
     }),
+    // Fetch invoice by Stripe session ID (used in complete page for PDF)
+    getInvoiceBySessionId: build.query({
+      query: (sessionId) => `/invoices/by-session/${sessionId}`,
+    }),
   }),
 });
 
@@ -91,4 +95,5 @@ export const {
   useGetInvoicesQuery,
   useGetInvoiceByIdQuery,
   useGetSessionStatusQuery,
+  useGetInvoiceBySessionIdQuery,
 } = api;

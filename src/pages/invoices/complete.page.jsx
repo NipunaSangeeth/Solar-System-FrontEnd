@@ -1,6 +1,7 @@
 import React from "react";
 import { useSearchParams, Link } from "react-router-dom";
-import { useGetSessionStatusQuery } from "../../lib/redux/quary";
+import { useGetSessionStatusQuery, useGetInvoiceBySessionIdQuery } from "../../lib/redux/quary";
+import { generateInvoicePDF } from "../../utils/pdf-generator";
 import { 
   CheckCircle2, 
   XCircle, 
@@ -22,6 +23,11 @@ const PaymentCompletePage = () => {
 
   // Fetch the final status of this Stripe session from our backend
   const { data, isLoading, error } = useGetSessionStatusQuery(sessionId, {
+    skip: !sessionId,
+  });
+
+  // Fetch the invoice linked to this session (for PDF generation)
+  const { data: invoice } = useGetInvoiceBySessionIdQuery(sessionId, {
     skip: !sessionId,
   });
 
@@ -87,7 +93,11 @@ const PaymentCompletePage = () => {
                 Go to Dashboard
                 <ChevronRight className="w-5 h-5" />
               </Link>
-              <button className="flex items-center justify-center gap-2 text-gray-500 hover:text-white py-3 transition-colors text-sm font-medium">
+              <button 
+                onClick={() => invoice && generateInvoicePDF(invoice)}
+                disabled={!invoice}
+                className="flex items-center justify-center gap-2 text-gray-500 hover:text-white py-3 transition-colors text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed"
+              >
                 <Download className="w-4 h-4" />
                 Download Receipt (PDF)
               </button>
