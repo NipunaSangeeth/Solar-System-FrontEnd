@@ -1,4 +1,4 @@
-import { ChartLine, LayoutDashboard, TriangleAlert } from "lucide-react";
+import { ChartLine, FileText, LayoutDashboard, TriangleAlert } from "lucide-react";
 import { Link } from "react-router";
 import {
   Sidebar,
@@ -29,6 +29,12 @@ const items = [
     title: "Analytics",
     url: "/dashboard/analytics",
     icon: <ChartLine className="w-8 h-8" size={32} />,
+  },
+  {
+    title: "Invoices",
+    url: "/dashboard/invoices",
+    icon: <FileText className="w-8 h-8" size={32} />,
+
   },
 ];
 

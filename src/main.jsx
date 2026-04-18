@@ -2,6 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 import HomePage from "./pages/home/home.page.jsx";
 import DashboardPage from "./pages/dashboard/dashboard.page.jsx";
@@ -28,6 +30,9 @@ import SolarUnitEditPage from "./pages/admin/solar-unit-edit.page";
 import SolarUnitCreatePage from "./pages/admin/solar-unit-create.page";
 import AnomaliesPage from "./pages/anomalies/anomalies.page";
 import AnalyticsPage from "./pages/analytics/analytics.page";
+import InvoicesPage from "./pages/invoices/invoices.page";
+import PaymentPage from "./pages/invoices/payment.page";
+import PaymentCompletePage from "./pages/invoices/complete.page";
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -51,12 +56,16 @@ createRoot(document.getElementById("root")).render(
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
               </Route>
+               {/* Protected Routes (Require Login) */}
               <Route element={<ProtectedLayout />}>
+              {/* Dashboard Area (Includes Sidebar and Nav) */}
                 <Route element={<DashboardLayout />}>
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/dashboard/anomalies" element={<AnomaliesPage />} />
                   <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
-
+                  <Route path="/dashboard/invoices" element={<InvoicesPage />} />
+                  <Route path="/dashboard/invoices/:id/pay" element={<PaymentPage />} />
+                  <Route path="/dashboard/invoices/complete" element={<PaymentCompletePage />} />
                 </Route>
 
                 <Route element={<AuthorizedLayout />}>

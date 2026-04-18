@@ -62,6 +62,17 @@ export const api = createApi({
     getSolarAnalytics: build.query({
       query: (id) => `/analytics/${id}`,
     }),
+    // Billing & Invoice endpoints
+    getInvoices: build.query({
+      query: ({ status } = {}) =>
+        status ? `/invoices?status=${status}` : `/invoices`,
+    }),
+    getInvoiceById: build.query({
+      query: (id) => `/invoices/${id}`,
+    }),
+    getSessionStatus: build.query({
+      query: (sessionId) => `/payments/session-status?session_id=${sessionId}`,
+    }),
   }),
 });
 
@@ -77,7 +88,7 @@ export const {
   useEditSolarUnitMutation,
   useGetWeatherQuery,
   useGetSolarAnalyticsQuery,
-
+  useGetInvoicesQuery,
+  useGetInvoiceByIdQuery,
+  useGetSessionStatusQuery,
 } = api;
-
-
